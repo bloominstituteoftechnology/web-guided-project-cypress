@@ -1,0 +1,36 @@
+{
+  "name": "web-guided-project-cypress",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "server": "node server.js",
+    "test": "cypress open"
+  },
+  "keywords": [],
+  "author": "Gabriel Cabrejas",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "cypress": "^4.8.0",
+    "eslint": "^7.2.0",
+    "eslint-plugin-react": "^7.20.0",
+    "less": "^3.11.3",
+    "parcel-bundler": "^1.12.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LambdaSchool/web-guided-project-cypress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LambdaSchool/web-guided-project-cypress/issues"
+  },
+  "homepage": "https://github.com/LambdaSchool/web-guided-project-cypress#readme"
+}
