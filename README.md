@@ -13,6 +13,6 @@ The quotes API runs on port `3333` and this port needs to be free, or the server
 - Clone the repo.
 - Navigate into the project folder.
 - Run `npm i` to download the project's dependencies listed in the `package.json`.
-- Run `npm start` to compile the React project and spin up the app on `http://localhost:1234`.
 - Run `npm run server` to spin up a local API on `http://localhost:4000/friends`.
+- Run `npm start` to compile the React project and spin up the app on `http://localhost:1234`.
 - Run `npm test` to run tests using Cypress.
