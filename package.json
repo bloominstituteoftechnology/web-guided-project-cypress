@@ -16,13 +16,13 @@
     "express": "^4.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "uuid": "^8.1.0"
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
-    "cypress": "^4.8.0",
-    "eslint": "^7.2.0",
-    "eslint-plugin-react": "^7.20.0",
-    "less": "^3.11.3",
+    "cypress": "^4.11.0",
+    "eslint": "^7.5.0",
+    "eslint-plugin-react": "^7.20.3",
+    "less": "^3.12.2",
     "parcel-bundler": "^1.12.4"
   },
   "repository": {
