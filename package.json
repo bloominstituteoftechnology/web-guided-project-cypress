@@ -11,16 +11,17 @@
   "author": "Gabriel Cabrejas",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "cors": "^2.8.5",
+    "eslint-plugin-cypress": "^2.11.1",
     "express": "^4.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "uuid": "^8.3.0"
   },
   "devDependencies": {
-    "cypress": "^5.0.0",
-    "eslint": "^7.7.0",
+    "cypress": "^5.2.0",
+    "eslint": "^7.9.0",
     "eslint-plugin-react": "^7.20.6",
     "less": "^3.12.2",
     "parcel-bundler": "^1.12.4"
