@@ -57,6 +57,52 @@ describe('Quotes App',()=>{
         cy.contains('Web 45 is cool, and fast learners').should('not.exist')
     })
 
+    describe('Adding a new quote', () => {
+        it('can submit and delete a new quote', () => {
+          textInput().type('Have fun!')
+          authorInput().type('Gabe')
+          submitBtn().click()
+          // It's important that state be the same at the beginning of each test
+          // which is why we delete the newly created post immediately.
+          // If we are not careful with this, we'll get lots of false positives and negatives.
+          // Restart the server script if necessary to go back to the original 3 quotes.
+          // Explain that in real world, a fresh testing database with predetermined data would be spun up for each test run.
+          cy.contains('Have fun!').siblings('button:nth-of-type(2)').click()
+          cy.contains('Have fun!').should('not.exist')
+        })
+    
+        it('variation of can submit a new quote', () => {
+          cy.contains(/have fun/).should('not.exist')
+          textInput().type('have fun')
+          authorInput().type('Gabe')
+          submitBtn().click()
+          cy.contains(/have fun/).should('exist')
+          cy.contains(/have fun/).next().next().click()
+          cy.contains(/have fun/).should('not.exist')
+        })
+      })
+    
+      describe('Editing an existing quote', () => {
+        it('can edit a quote', () => {
+          // Baking a new quote and submitting it.
+          textInput().type('Use Postman')
+          authorInput().type('Gabriel')
+          submitBtn().click()
+          // Hitting the edit button and checking inputs.
+          cy.contains('Use Postman').siblings('button:nth-of-type(1)').click()
+          textInput().should('have.value', 'Use Postman')
+          authorInput().should('have.value', 'Gabriel')
+          // Editing the quote and submitting changes.
+          textInput().type(' for realz')
+          authorInput().type(' Cabrejas')
+          submitBtn().click()
+          // Checking that the changes stuck.
+          cy.contains('Use Postman for realz (Gabriel Cabrejas)')
+          // Hitting the delete button for the edited quote to leave state the way it was. IMPORTANT !!
+          cy.contains('Use Postman for realz (Gabriel Cabrejas)').next().next().click()
+          cy.contains('Use Postman for realz (Gabriel Cabrejas)').should('not.exist')
+        })
+    })
 })
 
 const textInput = () => cy.get('input[name="text"]')
