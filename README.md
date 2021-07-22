@@ -18,4 +18,4 @@ being used by another application.
 - Run `npm test` to run tests using Cypress.
 
 ## Rick Mansfield's Pull Request
-- [PUll Request for convenience]()
+- [PUll Request for convenience](https://github.com/LambdaSchool/web-guided-project-cypress/pull/7)
