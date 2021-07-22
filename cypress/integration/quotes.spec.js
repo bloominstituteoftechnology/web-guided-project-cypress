@@ -40,8 +40,23 @@ describe('Quotes App',()=>{
 
     //testing for cancel button, when click it should empty the text boxes
     it('cancel button click',()=>{
-        
+        textInput().type("Have fun")
+        authorInput().type("Shweta")
+        cancelBtn().click()
+        textInput().should('have.value',"")
+        authorInput().should('have.value',"")
     })
+    it('adding a quote by hitting submit button ',()=>{
+        textInput().type("Web 45 is cool, and fast learners")
+        authorInput().type("Shweta")
+        submitBtn().click()
+        textInput().should('have.value',"")
+        authorInput().should('have.value',"")
+        submitBtn().should('be.disabled')
+        cy.contains('Web 45 is cool, and fast learners').siblings('button:nth-of-type(2)').click()
+        cy.contains('Web 45 is cool, and fast learners').should('not.exist')
+    })
+
 })
 
 const textInput = () => cy.get('input[name="text"]')
