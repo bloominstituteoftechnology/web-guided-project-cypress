@@ -5,10 +5,48 @@ describe('Quotes App',()=>{
     beforeEach(()=>{
         cy.visit('http://localhost:1234')
     })
+
+    it('check for right elements showing',()=>{
+        textInput().should('exist')
+        authorInput().should('exist')
+        submitBtn().should('exist')
+        cancelBtn().should('exist')
+        foobarInput().should('not.exist')
+
+    })
+    // here we check the submit button disable'
+    it('submit button disable',()=>{
+        submitBtn().should('be.disabled')
+    })
+    //here we check that text input box allows to type in
+    it('check that text can be',()=>{
+        textInput()
+            .should('have.value',"")
+            .type("Cypress is great testing framework")
+            .should('have.value',"Cypress is great testing framework")
+        
+        authorInput()
+            .should('have.value',"")
+            .type('Shweta')
+            .should('have.value','Shweta')
+    })
+
+    // After your both text boxes got the values - submit button enables
+    it('submit button should be enabled',()=>{
+        textInput().type("Have fun")
+        authorInput().type("Shweta")
+        submitBtn().should('not.be.disabled')
+    })
+
+    //testing for cancel button, when click it should empty the text boxes
+    it('cancel button click',()=>{
+        
+    })
 })
 
-const textInput = () => cy.get('input[name=text]')
-const authorInput = () => cy.get('input[name=author]')
+const textInput = () => cy.get('input[name="text"]')
+const authorInput = () => cy.get('input[name="author"]')
+const foobarInput = () => cy.get('input[name=foobar]')
 const submitBtn = () => cy.get('button[id="submitBtn"]')
 const cancelBtn = () => cy.get('button[id="cancelBtn"]')
 
@@ -18,3 +56,12 @@ it('sanity check for making sure everything is setup',()=>{
     expect(1+2).to.equal(3)     //strict
     expect(2+2).not.to.equal(5)
 })
+
+
+describe('Able to visit to got the right url',()=>{
+    it('can navigate to the site',()=>{
+        cy.url().should('include','localhost')
+    })
+})
+
+

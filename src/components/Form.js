@@ -40,6 +40,7 @@ export default function Form(props) {
     <form onSubmit={onSubmit}>
       <h3>{values.id ? 'Edit' : 'Add New'} Quote</h3>
       <input
+        id='quote'
         name='text'
         type='text'
         value={values.text}
@@ -47,6 +48,7 @@ export default function Form(props) {
         placeholder='Enter text'
       />
       <input
+        id='author'
         name='author'
         type='text'
         value={values.author}
