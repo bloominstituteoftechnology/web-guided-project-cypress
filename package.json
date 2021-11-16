@@ -28,10 +28,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LambdaSchool/web-guided-project-cypress.git"
+    "url": "git+https://github.com/BloomInstituteOfTechnology/web-guided-project-cypress.git"
   },
   "bugs": {
-    "url": "https://github.com/LambdaSchool/web-guided-project-cypress/issues"
+    "url": "https://github.com/BloomInstituteOfTechnology/web-guided-project-cypress/issues"
   },
-  "homepage": "https://github.com/LambdaSchool/web-guided-project-cypress#readme"
+  "homepage": "https://github.com/BloomInstituteOfTechnology/web-guided-project-cypress#readme"
 }
