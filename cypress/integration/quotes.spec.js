@@ -29,4 +29,59 @@ describe("Quotes App", () => {
     expect({}).not.to.equal({}); // strict === passes!
     expect({}).to.eql({}); // ==
   })
+
+  it("the proper elements are showing", () => {
+    textInput().should("exist");
+    authorInput().should("exist");
+    foobarInput().should("not.exist");
+    submitBtn().should("exist");
+    cancelBtn().should("exist");
+
+    cy.contains("Submit Quote").should("exist");
+    cy.contains(/submit quote/i).should("exist");
+  })
+
+  describe("Filling out the inputs and cancelling", () => {
+    it("can navigate to the site", () => {
+      cy.url().should("include", "localhost");
+    })
+
+    it("submit button starts out disabled", () => {
+      submitBtn().should("be.disabled");
+    })
+
+    it("can type in the inputs", () => {
+      textInput()
+        .should("have.value", "")
+        .type("CSS is the best!")
+        .should("have.value", "CSS is the best!");
+
+      authorInput()
+        .should("have.value", "")
+        .type("Casey!")
+        .should("have.value", "Casey!");
+    })
+
+    it("the submit button enables when both inputs are filled out", () => {
+      authorInput().type("Casey");
+      textInput().type("Lorem ipsum");
+      submitBtn().should("not.be.disabled");
+    })
+
+    it("the cancel button can reset the inputs and disable the submit button", () => {
+      authorInput().type("Casey");
+      textInput().type("Web56 rules!");
+      cancelBtn().click();
+      authorInput().should("have.value", "");
+      textInput().should("have.value", "");
+      submitBtn().should("be.disabled");
+    })
+  })
+
+
+
+
+
+
+
 })
