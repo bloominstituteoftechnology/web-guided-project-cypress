@@ -86,13 +86,37 @@ describe("Quotes App", () => {
 
       // It's important that state be the same at the beginning of each test
       // and that means front end state AS WELL as database state
+      // Typically you'll a dedicated testing database
       cy.contains("Lorem ipsum").siblings("button:nth-of-type(2)").click();
       cy.contains("Lorem ipsum").should("not.exist");
     })
+
+    it("variation of can submit a new quote", () => {
+      textInput().type("Testing is fun");
+      authorInput().type("CRHarding");
+      submitBtn().click();
+      cy.contains(/Testing is fun/).should("exist");
+      cy.contains(/Testing is fun/).next().next().click();
+    })
   })
 
+  describe("Editing an existing quote", () => {
+    it("can edit a quote", () => {
+      textInput().type("Lorem ipsum");
+      authorInput().type("Casey");
+      submitBtn().click();
 
+      cy.contains("Lorem ipsum").siblings("button:nth-of-type(1)").click();
+      textInput().should("have.value", "Lorem ipsum");
+      authorInput().should("have.value", "Casey");
 
+      textInput().type(" dolor sit.");
+      authorInput().type(" Harding");
+      submitBtn().click();
 
-
+      cy.contains("Lorem ipsum dolor sit. (Casey Harding)");
+      cy.contains("Lorem ipsum dolor sit. (Casey Harding)").next().next().click();
+      cy.contains("Lorem ipsum dolor sit. (Casey Harding)").should("not.exist");
+    })
+  })
 })
