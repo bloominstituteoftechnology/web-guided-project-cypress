@@ -78,7 +78,18 @@ describe("Quotes App", () => {
     })
   })
 
+  describe("Adding a new quote", () => {
+    it("can submit and delete a new quote", () => {
+      textInput().type("Lorem ipsum");
+      authorInput().type("Suresh");
+      submitBtn().click();
 
+      // It's important that state be the same at the beginning of each test
+      // and that means front end state AS WELL as database state
+      cy.contains("Lorem ipsum").siblings("button:nth-of-type(2)").click();
+      cy.contains("Lorem ipsum").should("not.exist");
+    })
+  })
 
 
 
